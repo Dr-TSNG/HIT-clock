@@ -6,6 +6,7 @@ try:
 except:
 	print('检测到有未安装的支持库，正在安装')
 	os.system('pip3 install selenium')
+	sleep(1)
 	from selenium import webdriver
 	from selenium.webdriver.support import expected_conditions as EC
 
@@ -24,6 +25,7 @@ if DRIVERKIND == 'edge':
 	except:
 		print('检测到有未安装的支持库，正在安装')
 		os.system('pip3 install msedge.selenium_tools')
+		sleep(1)
 		from msedge.selenium_tools import Edge, EdgeOptions
 	option = EdgeOptions()
 	option.use_chromium = True
