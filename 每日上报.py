@@ -6,9 +6,8 @@ try:
 except:
 	print('检测到有未安装的支持库，正在安装')
 	os.system('pip3 install selenium')
-	sleep(1)
-	from selenium import webdriver
-	from selenium.webdriver.support import expected_conditions as EC
+	print('安装完成，请重新运行脚本')
+	exit(0)
 
 print('初始化浏览器')
 config = open('配置.ini')
@@ -49,11 +48,12 @@ else:
 	print('不支持的浏览器类型')
 	exit(2)
 print('正在上报')
-driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/shsj/loginChange')
-driver.execute_script('tongyishenfen();')
+driver.get('https://ids.hit.edu.cn/authserver/')
 driver.find_element_by_id('mobileUsername').send_keys(USERNAME)
 driver.find_element_by_id('mobilePassword').send_keys(PASSWORD)
 driver.find_element_by_id('load').click()
+driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/shsj/loginChange')
+driver.execute_script('tongyishenfen();')
 driver.find_element_by_id('mrsb').click()
 driver.find_element_by_class_name('right_btn').click()
 sleep(1)
