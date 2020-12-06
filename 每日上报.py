@@ -28,8 +28,8 @@ if DRIVERKIND == 'edge':
 		from msedge.selenium_tools import Edge, EdgeOptions
 	option = EdgeOptions()
 	option.use_chromium = True
+	option.headless = True
 	option.add_argument('user-agent='+ua)
-	option.add_argument('headless')
 	try:
 		driver = Edge(executable_path = DRIVERPATH, options = option)
 	except:
@@ -37,7 +37,7 @@ if DRIVERKIND == 'edge':
 		exit(1)
 elif DRIVERKIND == 'chrome':
 	option = webdriver.ChromeOptions()
-	option.add_argument("--headless")
+	option.headless = True
 	option.add_argument('user-agent='+ua)
 	try:
 		driver = webdriver.Chrome(executable_path= DRIVERPATH, options = option)
@@ -61,6 +61,10 @@ alert = EC.alert_is_present()(driver)
 if alert:
 	alert.accept()
 	driver.find_element_by_id('center').find_elements_by_tag_name('div')[5].click()
+temp1 = driver.find_element_by_id('tw')
+temp2 = driver.find_element_by_id('tw1')
+driver.execute_script('arguments[0].value = 36',temp1)
+driver.execute_script('arguments[0].value = 5',temp2)
 driver.find_element_by_id('txfscheckbox').click()
 driver.execute_script('save();')
 driver.quit()
