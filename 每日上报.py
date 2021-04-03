@@ -10,7 +10,7 @@ except:
 	exit(0)
 
 print('初始化浏览器')
-config = open('配置.ini')
+config = open('配置.ini', encoding="UTF-8")
 DRIVERKIND = config.readline().split('"')[1]
 DRIVERPATH = config.readline().split('"')[1]
 USERNAME   = config.readline().split('"')[1]
