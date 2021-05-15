@@ -2,7 +2,8 @@ name: '每日上报'
 
 on:
   push:
-    branches: [ master ]
+  schedule:
+    - cron: '0 6 * * *'
 
 jobs:
   build:
