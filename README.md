@@ -1,6 +1,5 @@
 # 某HIT每日上报自动脚本  
-## 环境要求
-无
+## 别光白嫖不打star啊QwQ
 ## 使用方法
 1.  Fork本项目，点击Settings —— 左边的Secrets —— New repository secret  
 2.  分别配置好ID（学号）、PASSWORD（统一身份认证密码）、LOCATION（位置）  
