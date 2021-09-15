@@ -14,7 +14,7 @@ option.add_argument('user-agent='+ua)
 driver = webdriver.Chrome(executable_path= '/usr/bin/chromedriver', options = option)
 
 date_string = time.strftime("%Y", time.localtime())+"年"+time.strftime("%m", time.localtime())+"月"+time.strftime("%d", time.localtime())+"日"
-print('正在进行出校申请：'，date_string)
+print('正在进行出校申请：',date_string)
 driver.get('https://ids.hit.edu.cn/authserver/')
 driver.find_element_by_id('mobileUsername').send_keys(USERNAME)
 driver.find_element_by_id('mobilePassword').send_keys(PASSWORD)
