@@ -1,4 +1,4 @@
-# 某HIT每日上报自动脚本  
+# 某HIT每日上报自动脚本（请低调使用）  
 ## 别光白嫖不打star啊QwQ
 ## 使用方法
 1.  Fork本项目，点击Settings —— 左边的Secrets —— New repository secret  
