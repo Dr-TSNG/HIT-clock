@@ -26,7 +26,7 @@ for i in range (0, 5):
 		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsCxsq')
 		driver.find_element_by_xpath("/html/body/div[2]/a/div").click()
 		driver.find_element_by_xpath("/html/body/div[1]/div/div[9]/div/label[1]").click()
-		driver.execute_script('document.getElementById('rqlscx').removeAttribute('readonly')')
+		driver.execute_script('document.getElementById("rqlscx").removeAttribute("readonly")')
 		driver.find_element_by_xpath("/html/body/div[1]/div/div[12]/div[2]/input").send_keys(date_string)  # 填写日期
         driver.find_element_by_xpath("/html/body/div[1]/div/div[15]/textarea").send_keys("午饭晚饭西门外吃饭")  # 出校理由
         driver.find_element_by_xpath("/html/body/div[3]/div[1]/input").click()  # 勾选一堆东西
