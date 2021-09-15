@@ -45,6 +45,6 @@ for i in range (0, 5):
 		print('失败' + str(i+1) + '次，正在重试...')
 driver.quit()
 if success:
-	print('上报完成')
+	print('离校申请完成')
 else:
-	raise Exception('上报多次失败，可能学工系统已更新')
+	raise Exception('离校申请多次失败，可能学工系统已更新')
