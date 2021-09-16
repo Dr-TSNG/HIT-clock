@@ -38,4 +38,9 @@ jobs:
         LOCATION: ${{ secrets.LOCATION }}
       run: python 每日上报.py
     - name: start leave school
+      env:
+        ID: ${{ secrets.ID }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        LOCATION: ${{ secrets.LOCATION }}
+
       run: python leave_school.py
