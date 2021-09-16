@@ -28,17 +28,17 @@ for i in range (0, 5):
 		driver.find_element_by_xpath("/html/body/div[1]/div/div[9]/div/label[1]").click()
 		driver.execute_script('document.getElementById("rqlscx").removeAttribute("readonly")')
 		driver.find_element_by_xpath("/html/body/div[1]/div/div[12]/div[2]/input").send_keys(date_string)  # 填写日期
-        driver.find_element_by_xpath("/html/body/div[1]/div/div[15]/textarea").send_keys("午饭晚饭西门外吃饭")  # 出校理由
-        driver.find_element_by_xpath("/html/body/div[3]/div[1]/input").click()  # 勾选一堆东西
-        driver.find_element_by_xpath("/html/body/div[3]/div[2]/input").click()
-        driver.find_element_by_xpath("/html/body/div[3]/div[3]/input").click()
-        driver.find_element_by_xpath("/html/body/div[3]/div[4]/input").click()
-        driver.find_element_by_xpath("/html/body/div[3]/div[5]/input").click()
-        driver.find_element_by_xpath("/html/body/div[3]/div[6]/input").click()
-        driver.find_element_by_xpath("/html/body/div[3]/div[7]/input").click()
-        driver.find_element_by_xpath("/html/body/div[3]/div[8]/input").click()
-        driver.find_element_by_xpath("/html/body/div[3]/div[9]/input").click()
-        driver.find_element_by_xpath("/html/body/div[6]").click()  # 提交
+		driver.find_element_by_xpath("/html/body/div[1]/div/div[15]/textarea").send_keys("午饭晚饭西门外吃饭")  # 出校理由
+		driver.find_element_by_xpath("/html/body/div[3]/div[1]/input").click()  # 勾选一堆东西
+		driver.find_element_by_xpath("/html/body/div[3]/div[2]/input").click()
+		driver.find_element_by_xpath("/html/body/div[3]/div[3]/input").click()
+		driver.find_element_by_xpath("/html/body/div[3]/div[4]/input").click()
+		driver.find_element_by_xpath("/html/body/div[3]/div[5]/input").click()
+		driver.find_element_by_xpath("/html/body/div[3]/div[6]/input").click()
+		driver.find_element_by_xpath("/html/body/div[3]/div[7]/input").click()
+		driver.find_element_by_xpath("/html/body/div[3]/div[8]/input").click()
+		driver.find_element_by_xpath("/html/body/div[3]/div[9]/input").click()
+		driver.find_element_by_xpath("/html/body/div[6]").click()  # 提交
 		success = True
 		break
 	except:
