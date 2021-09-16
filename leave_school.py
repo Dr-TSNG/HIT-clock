@@ -1,4 +1,5 @@
 import os
+import time
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
