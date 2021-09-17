@@ -20,6 +20,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install selenium
+        pip install pytz
     - name: Install ChromeDriver
       run: |
         CHROME_VERSION=$(google-chrome --version | cut -f 3 -d ' ' | cut -d '.' -f 1) \
