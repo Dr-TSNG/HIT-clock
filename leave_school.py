@@ -3,6 +3,9 @@ import time
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
+import datetime
+import pytz
+datetime.datetime.now(pytz.timezone('PRC')).strftime("%Y-%m-%d_%H:%M")
 
 print('初始化浏览器')
 USERNAME   = os.environ['ID']
