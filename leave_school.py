@@ -5,9 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 import datetime
 import pytz
-print(datetime.datetime.now(pytz.timezone('PRC')).strftime("%Y")+"年"
-      +datetime.datetime.now(pytz.timezone('PRC')).strftime("%m")+"月"
-      +datetime.datetime.now(pytz.timezone('PRC')).strftime("%d")+"日")
+date_string = datetime.datetime.now(pytz.timezone('PRC')).strftime("%Y")+"年"+datetime.datetime.now(pytz.timezone('PRC')).strftime("%m")+"月"+datetime.datetime.now(pytz.timezone('PRC')).strftime("%d")+"日"
 
 print('初始化浏览器')
 USERNAME   = os.environ['ID']
@@ -19,10 +17,9 @@ option.headless = True
 option.add_argument('user-agent='+ua)
 driver = webdriver.Chrome(executable_path= '/usr/bin/chromedriver', options = option)
 
-date_string = time.strftime("%Y", time.localtime())+"年"+time.strftime("%m", time.localtime())+"月"+time.strftime("%d", time.localtime())+"日"
+# date_string = time.strftime("%Y", time.localtime())+"年"+time.strftime("%m", time.localtime())+"月"+time.strftime("%d", time.localtime())+"日"
 print('正在进行出校申请：',date_string)
-localtime = time.asctime( time.localtime(time.time()) )
-print ("本地时间为 :", localtime)
+
 driver.get('https://ids.hit.edu.cn/authserver/')
 driver.find_element_by_id('mobileUsername').send_keys(USERNAME)
 driver.find_element_by_id('mobilePassword').send_keys(PASSWORD)
