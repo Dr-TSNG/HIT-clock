@@ -1,4 +1,4 @@
-name: '每日上报'
+name: '离校申请'
 
 on:
   push:
