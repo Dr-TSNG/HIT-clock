@@ -5,7 +5,9 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 import datetime
 import pytz
-print(datetime.datetime.now(pytz.timezone('PRC')).strftime("%Y-%m-%d_%H:%M"))
+print(datetime.datetime.now(pytz.timezone('PRC')).strftime("%Y")+"年"
+      +datetime.datetime.now(pytz.timezone('PRC')).strftime("%m")+"月"
+      +datetime.datetime.now(pytz.timezone('PRC')).strftime("%d")+"日")
 
 print('初始化浏览器')
 USERNAME   = os.environ['ID']
