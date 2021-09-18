@@ -36,6 +36,5 @@ jobs:
       env:
         ID: ${{ secrets.ID }}
         PASSWORD: ${{ secrets.PASSWORD }}
-        LOCATION: ${{ secrets.LOCATION }}
 
-      run: python leave_school.py
+      run: python leave_school_1.py
