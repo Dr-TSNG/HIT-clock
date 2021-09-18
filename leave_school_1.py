@@ -9,7 +9,7 @@ date_string = datetime.datetime.now(pytz.timezone('PRC')).strftime("%Y")+"年"+d
 print('初始化浏览器')
 USERNAME   = os.environ['ID']
 PASSWORD   = os.environ['PASSWORD']
-ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403 MicroMessenger/6.3.27 NetType/WIFI Language/zh_CN'
+ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52'
 option = webdriver.ChromeOptions()
 option.headless = True
 option.add_argument('user-agent='+ua)
