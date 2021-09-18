@@ -1,6 +1,8 @@
 import time
 import os
 from selenium import webdriver
+import datetime
+import pytz
 
 date_string = datetime.datetime.now(pytz.timezone('PRC')).strftime("%Y")+"年"+datetime.datetime.now(pytz.timezone('PRC')).strftime("%m")+"月"+datetime.datetime.now(pytz.timezone('PRC')).strftime("%d")+"日"
 # date_string = time.strftime("%Y", time.localtime())+"年"+time.strftime("%m", time.localtime())+"月"+time.strftime("%d", time.localtime())+"日"
