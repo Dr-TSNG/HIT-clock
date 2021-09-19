@@ -37,4 +37,4 @@ jobs:
         ID: ${{ secrets.ID }}
         PASSWORD: ${{ secrets.PASSWORD }}
 
-      run: python leave_school_1.py
+      run: python leave_school.py
