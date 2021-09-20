@@ -36,7 +36,8 @@ time.sleep(1)
 # browser.switch_to.alert.accept()
 time.sleep(1)
 # browser.find_element_by_xpath("/html/body/div[1]/div/div[9]/div/label[1]").click()  # 勾选临时出校
-browser.find_element_by_xpath("/html/body/div[1]/div/div/label[1]").click()  # 勾选临时出校
+# browser.find_element_by_xpath("/html/body/div[1]/div/div/label[1]").click()  # 勾选临时出校
+browser.execute_script('document.getElementById("cxlx01").click()')
 time.sleep(1)
 js = "document.getElementById('rqlscx').removeAttribute('readonly')"
 browser.execute_script(js)
