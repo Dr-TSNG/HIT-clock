@@ -6,3 +6,6 @@
 [![g6BPeA.png](https://z3.ax1x.com/2021/05/15/g6BPeA.png)](https://imgtu.com/i/g6BPeA)  
 3.  点击Actions —— 中间的绿色按钮 —— 左边的每日上报 —— 启用  
 4.  搞定
+
+## 注意
+离校申请的action有问题，先别使用，明后天尝试修复
