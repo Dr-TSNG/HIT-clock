@@ -1,4 +1,5 @@
 import os
+import traceback
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
@@ -24,11 +25,14 @@ for i in range (0, 5):
 	try:
 		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsMrsbNew')
 		driver.execute_script(f'kzl10 = "{LOCATION}"')
+		driver.execute_script('document.getElementById("kzl18-0").checked = true')
+		driver.execute_script('document.getElementById("kzl32-2").checked = true')
 		driver.execute_script('document.getElementById("txfscheckbox").click()')
 		driver.find_element_by_class_name('submit').click()
 		success = True
 		break
 	except:
+		traceback.print_exc()
 		print('失败' + str(i+1) + '次，正在重试...')
 driver.quit()
 if success:
