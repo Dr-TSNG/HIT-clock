@@ -29,6 +29,7 @@ for i in range (0, 5):
 		driver.execute_script('document.getElementById("kzl32-2").checked = true')
 		driver.execute_script('document.getElementById("txfscheckbox").click()')
 		driver.execute_script('document.getElementById("txfscheckbox1").click()')
+		driver.execute_script('document.getElementById("txfscheckbox2").click()')
 		driver.find_element_by_class_name('submit').click()
 		success = True
 		break
