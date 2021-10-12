@@ -28,7 +28,12 @@ for i in range (0, 5):
 		driver.execute_script('document.getElementById("kzl18-0").checked = true')
 		driver.execute_script('document.getElementById("kzl32-2").checked = true')
 		driver.execute_script('document.getElementById("txfscheckbox").click()')
-		driver.execute_script('document.getElementById("txfscheckbox1").click()')
+		try:
+			# 如果有多的按钮，按，没多的按钮就算了
+			driver.execute_script('document.getElementById("txfscheckbox1").click()')
+			driver.execute_script('document.getElementById("txfscheckbox2").click()')
+		except:
+			pass
 		driver.find_element_by_class_name('submit').click()
 		success = True
 		break
