@@ -8,7 +8,7 @@ print('初始化浏览器')
 USERNAME   = os.environ['ID']
 PASSWORD   = os.environ['PASSWORD']
 LOCATION   = os.environ['LOCATION']
-ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403 MicroMessenger/6.3.27 NetType/WIFI Language/zh_CN'
+ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403 NetType/WIFI Language/zh_CN HuaWei-AnyOffice/1.0.0/cn.edu.hit.welink'
 option = webdriver.ChromeOptions()
 option.headless = True
 option.add_argument('user-agent='+ua)
