@@ -26,7 +26,7 @@ driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + 
 success = False
 for i in range (0, 5):
 	try:
-		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsMrsbNew/index')
+		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsMrsbNew/edit')
 		driver.execute_script(f'kzl10 = "{LOCATION}"')
 		driver.execute_script('document.getElementById("kzl18-0").checked = true')
 		driver.execute_script('document.getElementById("kzl32-2").checked = true')
