@@ -23,17 +23,11 @@ driver.find_element_by_id('load').click()
 success = False
 for i in range (0, 5):
 	try:
-		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsMrsbNew/index')
+		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsMrsbNew')
 		driver.execute_script(f'kzl10 = "{LOCATION}"')
 		driver.execute_script('document.getElementById("kzl18-0").checked = true')
 		driver.execute_script('document.getElementById("kzl32-2").checked = true')
 		driver.execute_script('document.getElementById("txfscheckbox").click()')
-		try:
-			# 如果有多的按钮，按，没多的按钮就算了
-			driver.execute_script('document.getElementById("txfscheckbox1").click()')
-			driver.execute_script('document.getElementById("txfscheckbox2").click()')
-		except:
-			pass
 		driver.find_element_by_class_name('submit').click()
 		success = True
 		break
