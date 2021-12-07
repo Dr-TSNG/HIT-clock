@@ -23,6 +23,13 @@ driver.find_element_by_id('load').click()
 
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
+def tryClick(id):
+	try:
+		driver.execute_script(f'document.getElementById("{id}").click()')
+	except:
+		print(f'No such checkbox: {id}')
+		pass
+
 success = False
 for i in range (0, 5):
 	try:
@@ -30,20 +37,10 @@ for i in range (0, 5):
 		driver.execute_script(f'kzl10 = "{LOCATION}"')
 		driver.execute_script('document.getElementById("kzl18-0").checked = true')
 		driver.execute_script('document.getElementById("kzl32-2").checked = true')
-		try:
-			driver.execute_script('document.getElementById("txfscheckbox").click()')
-		except:
-			pass
-		try:
-			# 如果有多的按钮，按，没多的按钮就算了
-			driver.execute_script('document.getElementById("txfscheckbox1").click()')
-			driver.execute_script('document.getElementById("txfscheckbox2").click()')
-		except:
-			pass
-		try:
-			driver.execute_script('document.getElementById("txfscheckbox3").click()') # ……变成3个按钮了……
-		except:
-			pass
+		tryClick("txfscheckbox")
+		tryClick("txfscheckbox1")
+		tryClick("txfscheckbox2")
+		tryClick("txfscheckbox3")
 		driver.find_element_by_class_name('submit').click()
 		success = True
 		break
