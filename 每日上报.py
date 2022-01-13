@@ -30,6 +30,8 @@ def tryClick(id):
 		print(f'No such checkbox: {id}')
 		pass
 
+driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
+
 success = False
 for i in range (0, 5):
 	try:
