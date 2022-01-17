@@ -17,9 +17,9 @@ driver = webdriver.Chrome(executable_path= '/usr/bin/chromedriver', options = op
 
 print('正在上报')
 driver.get('https://ids.hit.edu.cn/authserver/')
-driver.find_element_by_id('mobileUsername').send_keys(USERNAME)
-driver.find_element_by_id('mobilePassword').send_keys(PASSWORD)
-driver.find_element_by_id('load').click()
+driver.find_element_by_id('username').send_keys(USERNAME)
+driver.find_element_by_id('password').send_keys(PASSWORD)
+driver.find_element_by_id('login_submit').click()
 
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
