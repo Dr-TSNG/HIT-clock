@@ -16,7 +16,7 @@ option.add_argument('user-agent='+ua)
 driver = webdriver.Chrome(executable_path= '/usr/bin/chromedriver', options = option)
 
 print('正在上报')
-driver.get('https://ids.hit.edu.cn/authserver/')
+driver.get('https://ids.hit.edu.cn/authserver/login')
 driver.find_element_by_id('username').send_keys(USERNAME)
 driver.find_element_by_id('password').send_keys(PASSWORD)
 driver.find_element_by_id('login_submit').click()
