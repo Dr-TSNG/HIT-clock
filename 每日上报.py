@@ -3,6 +3,8 @@ import traceback
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
+from PIL import Image
+import ddddocr
 
 print('初始化浏览器')
 USERNAME   = os.environ['ID']
@@ -32,6 +34,29 @@ def tryClick(id):
 
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
+def yzm(id):
+	try:
+		# 获取验证码
+		driver.save_screenshot('E:\\printscreen.png') 
+		imgelement = driver.find_element_by_xpath('//*[@id="imgObjjgRegist"]')  # 定位验证码
+		location = imgelement.location  # 获取验证码x,y轴坐标
+		size = imgelement.size  # 获取验证码的长宽
+		rangle = (int(location['x']), int(location['y']), int(location['x'] + size['width']),
+			  int(location['y'] + size['height']))  # 写成我们需要截取的位置坐标
+		i = Image.open("E:\\printscreen.png")
+		frame4 = i.crop(rangle)  # 使用Image的crop函数，从截图中再次截取我们需要的区域
+		frame4.save('E:\\save.jpg') # 保存我们接下来的验证码图片 进行打码
+		
+		# 验证码识别
+		ocr = ddddocr.DdddOcr()
+		with open('./save.png', 'rb') as f:
+    			img_bytes = f.read()
+			res = ocr.classification(img_bytes)
+		driver.find_element_by_id('yzm').send_keys(res)
+		driver.find_element_by_id('pass-dialog').click()
+	except Exception as e:
+		print(e)
+
 success = False
 for i in range (0, 5):
 	try:
@@ -44,6 +69,7 @@ for i in range (0, 5):
 		tryClick("txfscheckbox2")
 		tryClick("txfscheckbox3")
 		driver.find_element_by_class_name('submit').click()
+		
 		success = True
 		break
 	except:
