@@ -1,4 +1,5 @@
 # 某 HIT 每日上报自动脚本（请低调使用）  
+支持某深圳校区每日上报
 ## 别光白嫖不打 Star 啊 QwQ
 ## 使用方法
 1.  Fork 本项目，点击 Settings —— 左边的 Secrets —— New repository secret  
