@@ -35,7 +35,7 @@ def tryClick(id):
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
 
-def yzm(id):
+def yzm():
 	try:
 		# 获取验证码
 		driver.save_screenshot('E:\\printscreen.png') 
@@ -70,7 +70,7 @@ for i in range (0, 5):
 		tryClick("txfscheckbox2")
 		tryClick("txfscheckbox3")
 		driver.find_element_by_class_name('submit').click()
-		
+		yzm()
 		success = True
 		break
 	except:
