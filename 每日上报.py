@@ -53,6 +53,7 @@ def yzm():
 		with open('./save.png', 'rb') as f:
     			img_bytes = f.read()
 			res = ocr.classification(img_bytes)
+		f.close()
 		driver.find_element_by_id('yzm').send_keys(res)
 		driver.find_element_by_id('pass-dialog').click()
 	except Exception as e:
