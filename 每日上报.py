@@ -34,6 +34,7 @@ def tryClick(id):
 
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
+
 def yzm(id):
 	try:
 		# 获取验证码
