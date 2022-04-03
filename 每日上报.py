@@ -46,7 +46,7 @@ def yzm():
 			  int(location['y'] + size['height']))  # 写成我们需要截取的位置坐标
 		i = Image.open("E:\\printscreen.png")
 		frame4 = i.crop(rangle)  # 使用Image的crop函数，从截图中再次截取我们需要的区域
-		frame4.save('E:\\save.jpg') # 保存我们接下来的验证码图片 进行打码
+		frame4.save('E:\\save.png') # 保存我们接下来的验证码图片 进行打码
 		
 		# 验证码识别
 		ocr = ddddocr.DdddOcr()
