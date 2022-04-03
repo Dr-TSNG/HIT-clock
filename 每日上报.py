@@ -51,7 +51,7 @@ def yzm():
 		# 验证码识别
 		ocr = ddddocr.DdddOcr()
 		with open('./save.png', 'rb') as f:
-    			img_bytes = f.read()
+			img_bytes = f.read()
 			res = ocr.classification(img_bytes)
 		f.close()
 		driver.find_element_by_id('yzm').send_keys(res)
