@@ -41,10 +41,12 @@ def yzm():
 		# 获取验证码
 		operation = True
 		while (operation):
+
 			imgelement = driver.find_elements_by_xpath('//*[@id="imgObjjgRegist"]')  # 定位验证码
 			if not imgelement:
 				return
 			imgelement[0].screenshot('./save.png')
+
 			# 验证码识别
 			ocr = ddddocr.DdddOcr()
 			with open('./save.png', 'rb') as f:
