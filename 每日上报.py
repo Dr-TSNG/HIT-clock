@@ -3,6 +3,8 @@ import traceback
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
+from PIL import Image
+import ddddocr
 
 print('初始化浏览器')
 USERNAME   = os.environ['ID']
@@ -32,6 +34,32 @@ def tryClick(id):
 
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
+
+def yzm():
+	try:
+		# 获取验证码
+		# 获取验证码
+		operation = True
+		while (operation):
+			imgelement = driver.find_elements_by_xpath('//*[@id="imgObjjgRegist"]')  # 定位验证码
+			if not imgelement:
+				return
+			imgelement[0].screenshot('./save.png')
+			# 验证码识别
+			ocr = ddddocr.DdddOcr()
+			with open('./save.png', 'rb') as f:
+				img_bytes = f.read()
+				res = ocr.classification(img_bytes)
+			f.close()
+			print(res)
+			driver.find_element_by_id('yzm').send_keys(res)
+			driver.find_element_by_id('pass-dialog').click()
+			if not driver.find_elements_by_class_name("weui-toptips_warn"):
+				operation = False
+	except Exception as e:
+		print("验证码处理失败")
+		print(e)
+
 success = False
 for i in range (0, 5):
 	try:
@@ -44,6 +72,8 @@ for i in range (0, 5):
 		tryClick("txfscheckbox2")
 		tryClick("txfscheckbox3")
 		driver.find_element_by_class_name('submit').click()
+		sleep(1) # 防止有验证码没加载
+		yzm()
 		success = True
 		break
 	except:
