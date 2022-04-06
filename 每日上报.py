@@ -40,7 +40,8 @@ def yzm():
 		# 获取验证码
 		# 获取验证码
 		operation = True
-		driver.set_window_size(1200, 800)
+		driver.driver.maximize_window()
+		counter = 0
 		while (operation):
 			imgelement = driver.find_elements_by_xpath('//*[@id="imgObjjgRegist"]')  # 定位验证码
 			if not imgelement:
@@ -55,9 +56,10 @@ def yzm():
 			print(res)
 			driver.find_element_by_id('yzm').send_keys(res)
 			driver.find_element_by_id('pass-dialog').click()
-			if not driver.find_elements_by_class_name("weui-toptips_warn"):
-				operation = False
+			counter += 1
 			sleep(1)
+			if not driver.find_elements_by_class_name("weui-toptips_warn") or counter > 5:
+				operation = False
 	except Exception as e:
 		print("验证码处理失败")
 		print(e)
