@@ -40,7 +40,7 @@ def yzm():
 		# 获取验证码
 		# 获取验证码
 		operation = True
-		driver.driver.maximize_window()
+		driver.maximize_window()
 		counter = 0
 		while (operation):
 			imgelement = driver.find_elements_by_xpath('//*[@id="imgObjjgRegist"]')  # 定位验证码
