@@ -40,7 +40,6 @@ def yzm():
 		# 获取验证码
 		# 获取验证码
 		operation = True
-		driver.maximize_window()
 		counter = 0
 		while (operation):
 			imgelement = driver.find_elements_by_xpath('//*[@id="imgObjjgRegist"]')  # 定位验证码
@@ -68,6 +67,7 @@ success = False
 for i in range (0, 5):
 	try:
 		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsMrsbNew/edit')
+		driver.maximize_window()
 		driver.execute_script(f'kzl10 = "{LOCATION}"')
 # 		driver.execute_script('document.getElementById("kzl18-0").checked = true')
 # 		driver.execute_script('document.getElementById("kzl32-2").checked = true')
