@@ -3,6 +3,7 @@ import traceback
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 from PIL import Image
 import ddddocr
 
@@ -42,6 +43,8 @@ def yzm():
 		operation = True
 		counter = 0
 		while (operation):
+			WebDriverWait(driver, 10).until(
+                		EC.presence_of_element_located((By.XPATH, "//*[@id='imgObjjgRegist']")))
 			imgelement = driver.find_elements_by_xpath('//*[@id="imgObjjgRegist"]')  # 定位验证码
 			if not imgelement:
 				return
