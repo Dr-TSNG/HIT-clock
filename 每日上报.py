@@ -89,7 +89,7 @@ for i in range (0, 5):
 		tryClick("txfscheckbox1")
 		tryClick("txfscheckbox2")
 		tryClick("txfscheckbox3")
-		driver.find_element_by_class_name('submit').click()
+		driver.find_element(By.CLASS_NAME, 'submit').click()
 		sleep(5) # 防止有验证码没加载
 		yzm()
 		success = True
