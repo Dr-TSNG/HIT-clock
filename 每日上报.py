@@ -21,9 +21,9 @@ driver = webdriver.Chrome(executable_path= '/usr/bin/chromedriver', options = op
 
 print('正在上报')
 driver.get('https://ids.hit.edu.cn/authserver/login')
-driver.find_element_by_id('username').send_keys(USERNAME)
-driver.find_element_by_id('password').send_keys(PASSWORD)
-driver.find_element_by_id('login_submit').click()
+driver.find_element(By.ID, 'username').send_keys(USERNAME)
+driver.find_element(By.ID,'password').send_keys(PASSWORD)
+driver.find_element(By.ID,'login_submit').click()
 
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
@@ -48,7 +48,7 @@ def yzm():
 				operation = False
 			WebDriverWait(driver, 10).until(
                 		EC.presence_of_element_located((By.XPATH, "//*[@id='imgObjjgRegist']")))
-			imgelement = driver.find_elements_by_xpath('//*[@id="imgObjjgRegist"]')  # 定位验证码
+			imgelement = driver.find_elements(By.XPATH, '//*[@id="imgObjjgRegist"]')  # 定位验证码
 			if not imgelement:
 				return
 			try:
@@ -65,12 +65,12 @@ def yzm():
 				res = ocr.classification(img_bytes)
 			f.close()
 			print(res)
-			driver.find_element_by_id('yzm').send_keys(res)
-			driver.find_element_by_id('pass-dialog').click()
+			driver.find_element(By.ID,'yzm').send_keys(res)
+			driver.find_element(By.ID,'pass-dialog').click()
 
 			counter += 1
 			sleep(1)
-			if not driver.find_elements_by_class_name("weui-toptips_warn"):
+			if not driver.find_elements(By.CLASS_NAME, "weui-toptips_warn"):
 				operation = False
 	except Exception as e:
 		print("验证码处理失败")
