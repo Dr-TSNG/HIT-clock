@@ -3,6 +3,8 @@ import traceback
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.by import By
 from PIL import Image
 import ddddocr
 
@@ -19,9 +21,9 @@ driver = webdriver.Chrome(executable_path= '/usr/bin/chromedriver', options = op
 
 print('正在上报')
 driver.get('https://ids.hit.edu.cn/authserver/login')
-driver.find_element_by_id('username').send_keys(USERNAME)
-driver.find_element_by_id('password').send_keys(PASSWORD)
-driver.find_element_by_id('login_submit').click()
+driver.find_element(By.ID, 'username').send_keys(USERNAME)
+driver.find_element(By.ID,'password').send_keys(PASSWORD)
+driver.find_element(By.ID,'login_submit').click()
 
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
@@ -35,33 +37,51 @@ def tryClick(id):
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
 
-def yzm(id):
+def yzm():
 	try:
 		# 获取验证码
-		driver.save_screenshot('E:\\printscreen.png') 
-		imgelement = driver.find_element_by_xpath('//*[@id="imgObjjgRegist"]')  # 定位验证码
-		location = imgelement.location  # 获取验证码x,y轴坐标
-		size = imgelement.size  # 获取验证码的长宽
-		rangle = (int(location['x']), int(location['y']), int(location['x'] + size['width']),
-			  int(location['y'] + size['height']))  # 写成我们需要截取的位置坐标
-		i = Image.open("E:\\printscreen.png")
-		frame4 = i.crop(rangle)  # 使用Image的crop函数，从截图中再次截取我们需要的区域
-		frame4.save('E:\\save.jpg') # 保存我们接下来的验证码图片 进行打码
-		
-		# 验证码识别
-		ocr = ddddocr.DdddOcr()
-		with open('./save.png', 'rb') as f:
-    			img_bytes = f.read()
-			res = ocr.classification(img_bytes)
-		driver.find_element_by_id('yzm').send_keys(res)
-		driver.find_element_by_id('pass-dialog').click()
+		# 获取验证码
+		operation = True
+		counter = 0
+		while (operation):
+			if counter > 5:
+				operation = False
+			WebDriverWait(driver, 10).until(
+                		EC.presence_of_element_located((By.XPATH, "//*[@id='imgObjjgRegist']")))
+			imgelement = driver.find_elements(By.XPATH, '//*[@id="imgObjjgRegist"]')  # 定位验证码
+			if not imgelement:
+				return
+			try:
+				imgelement[0].screenshot('./save.png')
+			except Exception as e:
+				print("截图失败")
+				print(e)
+				counter += 1
+				continue
+			# 验证码识别
+			ocr = ddddocr.DdddOcr()
+			with open('./save.png', 'rb') as f:
+				img_bytes = f.read()
+				res = ocr.classification(img_bytes)
+			f.close()
+			print(res)
+			driver.find_element(By.ID,'yzm').send_keys(res)
+			driver.find_element(By.ID,'pass-dialog').click()
+
+			counter += 1
+			sleep(1)
+			if not driver.find_elements(By.CLASS_NAME, "weui-toptips_warn"):
+				operation = False
 	except Exception as e:
+		print("验证码处理失败")
 		print(e)
 
 success = False
 for i in range (0, 5):
 	try:
 		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsMrsbNew/edit')
+		driver.maximize_window()
+		driver.set_window_size(800, 600)
 		driver.execute_script(f'kzl10 = "{LOCATION}"')
 # 		driver.execute_script('document.getElementById("kzl18-0").checked = true')
 # 		driver.execute_script('document.getElementById("kzl32-2").checked = true')
@@ -69,8 +89,9 @@ for i in range (0, 5):
 		tryClick("txfscheckbox1")
 		tryClick("txfscheckbox2")
 		tryClick("txfscheckbox3")
-		driver.find_element_by_class_name('submit').click()
-		
+		driver.find_element(By.CLASS_NAME, 'submit').click()
+		sleep(5) # 防止有验证码没加载
+		yzm()
 		success = True
 		break
 	except:
