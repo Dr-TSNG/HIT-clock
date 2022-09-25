@@ -62,6 +62,3 @@ driver.find_element(By.XPATH,"//div[@onclick='save()']").click()
 sleep(1)
 driver.find_element(By.XPATH,"//a[@class='weui-dialog__btn primary']").click()
 sleep(5)
-
-
-# driver.find_element_by_xpath("/html/body/div[1]/div/div[9]/div/label[1]").click()  
