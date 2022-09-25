@@ -15,14 +15,14 @@ reasons = ['吃饭','睡觉','去哈工大中心参观','看病']
 # brower.get('https://www.csdn.net/')
 import os 
 
-USERNAME = '120L022207'
-PASSWORD = 'woaiwodejia123'
-REASON = '吃饭'
+USERNAME = ''
+PASSWORD = ''
+
 
 ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403 NetType/WIFI Language/zh_CN'
 app = 'HuaWei-AnyOffice/1.0.0/cn.edu.hit.welink'
 option = webdriver.ChromeOptions()
-# option.headless = True
+option.headless = True
 option.add_argument('user-agent='+ua)
 driver = webdriver.Chrome(options=option)
 # driver = webdriver.Chrome(executable_path= '/usr/local/bin/chromedriver', options = option)
@@ -41,31 +41,15 @@ def tryClick(id):
         print(f'No Such Checkbox:{id}')
         pass
 
-# def tryClick(id):
-#  	try:
-# 		 driver.execute_script(f'document.getElementById("{id}").click()')
-# 	except:
-# 		 print(f'No such checkbox: {id}')
-# 		 pass
-
-
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
-# success = False 
-# for i in range(0,5):
-#     try: 
-#         driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsCxsq/index')
-#         driver.maximize_window()
-#         driver.set_window_size(800,600)
-#         driver.find_element(By.CLASS_NAME,'right_btn').click()
-#         driver.find_element(By.CLASS_NAME,'weui-cell_bd1').click()
+
 driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsCxsq/index')
 driver.maximize_window()
 driver.set_window_size(800,600)
 driver.find_element(By.CLASS_NAME,'right_btn').click()
-# driver.find_element(By.NAME,'cxlx').click()
 driver.find_element(By.XPATH,"//label[@for='cxlx01']").click()
-# driver.find_element(By.ID,'rqlscx').click()
+
 
 jscode = 'document.getElementById("rqlscx").removeAttribute("readonly");'
 driver.execute_script(jscode)
