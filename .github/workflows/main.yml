@@ -1,4 +1,4 @@
-name: '每日上报'
+name: '每日上报&自动申请离校'
 
 on:
   push:
@@ -39,6 +39,7 @@ jobs:
         PASSWORD: ${{ secrets.PASSWORD }}
         LOCATION: ${{ secrets.LOCATION }}
       run: python 每日上报.py
+           python 自动申请出校.py
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@v2
       with:
