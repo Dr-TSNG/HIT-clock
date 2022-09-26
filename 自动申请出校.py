@@ -1,3 +1,9 @@
+#  *
+#  * @Author: naw0 
+#  * @Date: 2022-09-26 09:02:38   
+#  * @Last Modified time: 2022-09-26 09:02:38 
+#  * @email: xindu1106@gmail.com
+
 import os
 import traceback
 from time import sleep
@@ -11,12 +17,8 @@ import random
 
 reasons = ['吃饭','睡觉','去哈工大中心参观','看病']
 
-# brower = webdriver.Chrome()
-# brower.get('https://www.csdn.net/')
-import os 
-
-USERNAME = ''
-PASSWORD = ''
+USERNAME   = os.environ['ID']
+PASSWORD   = os.environ['PASSWORD']
 
 
 ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403 NetType/WIFI Language/zh_CN'
