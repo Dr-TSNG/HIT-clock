@@ -2,7 +2,7 @@
 Author: naw0 xindu1106@gmail.com
 Date: 2022-09-26 00:54:27
 LastEditors: naw0 xindu1106@gmail.com
-LastEditTime: 2022-09-26 18:29:37
+LastEditTime: 2022-09-26 18:35:01
 FilePath: /HIT-clock/自动申请出校.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -53,6 +53,7 @@ def tryClick(id):
 
 driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": ua + ' ' + app})
 
+print('开始申请')
 # 申请出校
 driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsCxsq/index')
 driver.maximize_window()
@@ -69,13 +70,14 @@ jscode = 'document.getElementById("rqlscx").removeAttribute("readonly");'
 driver.execute_script(jscode)
 
 #构造日期字符串
-datestr = str(datetime.date.today().year)+'年'+str(datetime.date.today().month)+'月'+str(datetime.date.today().day)+'日'
+datestr = str(datetime.date.today().year)+'年'+str(datetime.date.today().month)+'月'+str(datetime.date.today().day+1)+'日'
 
 #填写出校日期
 driver.find_element(By.ID,'rqlscx').send_keys(datestr)
 
 #填写出校理由
-driver.find_element(By.ID,'cxly').send_keys(reasons[random.randint(0, 3)])
+reason = reasons[random.randint(0, 3)]
+driver.find_element(By.ID,'cxly').send_keys(reason)
 
 #勾选框框
 for i in range(1,10):
@@ -86,3 +88,5 @@ driver.find_element(By.XPATH,"//div[@onclick='save()']").click()
 sleep(1)
 driver.find_element(By.XPATH,"//a[@class='weui-dialog__btn primary']").click()
 sleep(5)
+
+print('申请成功  理由为'+reason)
