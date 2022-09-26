@@ -1,14 +1,7 @@
-'''
-Author: naw0 xindu1106@gmail.com
-Date: 2022-09-26 00:54:27
-LastEditors: naw0 xindu1106@gmail.com
-LastEditTime: 2022-09-26 18:35:01
-FilePath: /HIT-clock/自动申请出校.py
-Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
-'''
+
 #  *
 #  * @Author: naw0 
-#  * @Date: 2022-09-26 09:02:38   
+#  * @Date: 2022-09-26 09:02:38  
 #  * @Last Modified time: 2022-09-26 09:02:38 
 #  * @email: xindu1106@gmail.com
 
@@ -32,7 +25,7 @@ PASSWORD   = os.environ['PASSWORD']
 ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403 NetType/WIFI Language/zh_CN'
 app = 'HuaWei-AnyOffice/1.0.0/cn.edu.hit.welink'
 option = webdriver.ChromeOptions()
-option.headless = True
+# option.headless = True
 option.add_argument('user-agent='+ua)
 driver = webdriver.Chrome(options=option)
 # driver = webdriver.Chrome(executable_path= '/usr/local/bin/chromedriver', options = option)
@@ -70,7 +63,7 @@ jscode = 'document.getElementById("rqlscx").removeAttribute("readonly");'
 driver.execute_script(jscode)
 
 #构造日期字符串
-datestr = str(datetime.date.today().year)+'年'+str(datetime.date.today().month)+'月'+str(datetime.date.today().day+1)+'日'
+datestr = str(datetime.date.today().year)+'年'+str(datetime.date.today().month)+'月'+str(datetime.date.today().day)+'日'
 
 #填写出校日期
 driver.find_element(By.ID,'rqlscx').send_keys(datestr)
