@@ -3,7 +3,7 @@ name: '每日上报&自动申请离校'
 on:
   push:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   build:
