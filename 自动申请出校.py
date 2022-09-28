@@ -21,11 +21,10 @@ reasons = ['吃饭','睡觉','去哈工大中心参观','看病']
 USERNAME   = os.environ['ID']
 PASSWORD   = os.environ['PASSWORD']
 
-
 ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Mobile/14A403 NetType/WIFI Language/zh_CN'
 app = 'HuaWei-AnyOffice/1.0.0/cn.edu.hit.welink'
 option = webdriver.ChromeOptions()
-# option.headless = True
+option.headless = True
 option.add_argument('user-agent='+ua)
 driver = webdriver.Chrome(options=option)
 # driver = webdriver.Chrome(executable_path= '/usr/local/bin/chromedriver', options = option)
