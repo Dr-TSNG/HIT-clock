@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from PIL import Image
+import requests
 import ddddocr
 
 print('初始化浏览器')
@@ -18,7 +19,17 @@ option = webdriver.ChromeOptions()
 option.headless = True
 option.add_argument('user-agent='+ua)
 driver = webdriver.Chrome(executable_path= '/usr/bin/chromedriver', options = option)
-
+geo_api_url = 'https://restapi.amap.com/v3/geocode/geo?key=be8762efdce0ddfbb9e2165a7cc776bd&s=rsv3&language=zh_cn&extensions=base&appname=https%3A%2F%2Fxg.hit.edu.cn%2Fzhxy-xgzs%2Fxg_mobile%2FxsMrsbNew&csid=47204181-378A-4F55-A94D-548A5BFD0DFD&sdkversion=1.4.16&address='
+regeo_api_url = 'https://restapi.amap.com/v3/geocode/regeo?key=be8762efdce0ddfbb9e2165a7cc776bd&s=rsv3&language=zh_cn&extensions=base&appname=https%3A%2F%2Fxg.hit.edu.cn%2Fzhxy-xgzs%2Fxg_mobile%2FxsMrsbNew&csid=47204181-378A-4F55-A94D-548A5BFD0DFD&sdkversion=1.4.16&location='
+addr = LOCATION
+addr = parse.quote(addr)
+geo_response = requests.get(geo_api_url+addr)
+location = geo_response.json()['geocodes'][0]['location']
+addr_spl = location.split(',')
+longitude, latitude = addr_spl[0], addr_spl[1]
+regeo_response = requests.get(regeo_api_url+location)
+geo_info = regeo_response.json()['regeocode']
+LOCATION = geo_info['formatted_address']
 print('正在上报')
 driver.get('https://ids.hit.edu.cn/authserver/login')
 driver.find_element(By.ID, 'username').send_keys(USERNAME)
