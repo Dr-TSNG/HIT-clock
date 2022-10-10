@@ -2,6 +2,7 @@ name: '每日上报'
 
 on:
   push:
+  workflow_dispatch:
   schedule:
     - cron: '0 23 * * *'
 
