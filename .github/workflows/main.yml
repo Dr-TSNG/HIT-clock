@@ -21,7 +21,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install selenium
-        pip install pillow
+        pip install pillow requests
         pip install ddddocr
     - name: Install ChromeDriver
       run: |
