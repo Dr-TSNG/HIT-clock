@@ -7,7 +7,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from PIL import Image
 import requests
-import parse
+from urllib import parse
 import ddddocr
 
 print('初始化浏览器')
