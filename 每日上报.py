@@ -20,7 +20,7 @@ option.add_argument('user-agent='+ua)
 driver = webdriver.Chrome(executable_path= '/usr/bin/chromedriver', options = option)
 
 print('正在上报')
-driver.get('https://ids.hit.edu.cn/authserver/login')
+driver.get('http://ids-hit-edu-cn-s.ivpn.hit.edu.cn:1080/authserver/login')
 driver.find_element(By.ID, 'username').send_keys(USERNAME)
 driver.find_element(By.ID,'password').send_keys(PASSWORD)
 driver.find_element(By.ID,'login_submit').click()
@@ -79,12 +79,10 @@ def yzm():
 success = False
 for i in range (0, 5):
 	try:
-		driver.get('https://xg.hit.edu.cn/zhxy-xgzs/xg_mobile/xsMrsbNew/edit')
+		driver.get('http://xg-hit-edu-cn-s.ivpn.hit.edu.cn:1080/zhxy-xgzs/xg_mobile/xsMrsbNew/edit')
 		driver.maximize_window()
 		driver.set_window_size(800, 600)
 		driver.execute_script(f'kzl10 = "{LOCATION}"')
-# 		driver.execute_script('document.getElementById("kzl18-0").checked = true')
-# 		driver.execute_script('document.getElementById("kzl32-2").checked = true')
 		tryClick("txfscheckbox")
 		tryClick("txfscheckbox1")
 		tryClick("txfscheckbox2")
