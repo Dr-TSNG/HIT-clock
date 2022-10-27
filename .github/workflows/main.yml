@@ -3,7 +3,7 @@ name: '每日上报'
 on:
   push:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 22 * * *'
 
 jobs:
   build:
@@ -46,3 +46,4 @@ jobs:
         repository: ${{ github.repository }}
         retain_days: 0
         keep_minimum_runs: 0
+        delete_workflow_pattern: '每日上报'
